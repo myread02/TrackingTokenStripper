@@ -38,8 +38,8 @@
         .remove('yclid')
         .remove('_openstat')
         .remove('guccounter')
-		.remove('guce_referrer')
-		.remove('guce_referrer_sig')
+	.remove('guce_referrer')
+	.remove('guce_referrer_sig')
         .toString();
 
     if (s && location.href !== s) {
