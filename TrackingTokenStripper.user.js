@@ -1,14 +1,11 @@
 // ==UserScript==
 // @name         TrackingTokenStripper
-// @version      1.4
+// @version      2.0
 // @description  Remove most of the annoying tracking token from URL parameters
 // @license      MIT
-// @homepage     https://blog.miniasp.com/
-// @homepageURL  https://blog.miniasp.com/
-// @website      https://www.facebook.com/will.fans
-// @source       https://github.com/doggy8088/TrackingTokenStripper/raw/refs/heads/master/TrackingTokenStripper.user.js
-// @namespace    https://github.com/doggy8088/TrackingTokenStripper
-// @author       Will Huang, Stevwang
+// @homepage     https://github.com/myread02/TrackingTokenStripper
+// @author       Stevwang
+// @contributor  Will Huang (https://github.com/doggy8088/TrackingTokenStripper)
 // @match        *://*/*
 // @run-at       document-start
 // ==/UserScript==
@@ -176,6 +173,7 @@
             .removeByAmazon('smid')
             .removeByAmazon('dib')
             .removeByAmazon('dib_tag')
+            .cleanAmazonPath()
 
             // Others
             .remove('__tn__')
@@ -248,6 +246,24 @@
                         return this.remove(name);
                     }
                     return this;
+                },
+                cleanAmazonPath() {
+                    // Match all Amazon international domains
+                    const amazonDomains = /^www\.amazon\.(com|co\.uk|de|fr|it|es|co\.jp|ca|com\.au|in|com\.mx|com\.br|nl|se|pl|sg|ae|sa|com\.tr|eg|cn)$/i;
+                    if (amazonDomains.test(parsedUrl.hostname)) {
+                        const path = parsedUrl.pathname;
+                        // Match /dp/ASIN or /gp/product/ASIN pattern
+                        const dpMatch = path.match(/\/dp\/([A-Z0-9]{10})/i);
+                        const gpMatch = path.match(/\/gp\/product\/([A-Z0-9]{10})/i);
+                        if (dpMatch) {
+                            parsedUrl.pathname = '/dp/' + dpMatch[1];
+                        } else if (gpMatch) {
+                            parsedUrl.pathname = '/dp/' + gpMatch[1];
+                        }
+                        // Clear all query params for clean Amazon URLs
+                        parsedUrl.search = '';
+                    }
+                    return TrackingTokenStripper(parsedUrl.toString());
                 },
                 toString() {
                     return parsedUrl.toString();
