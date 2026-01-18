@@ -146,6 +146,75 @@
             .removeByDomain('www.bilibili.com', 'share_source')
             .removeByDomain('www.bilibili.com', 'share_medium')
 
+            // Threads
+            .removeByDomain('www.threads.com', 'xmt')
+            .removeByDomain('www.threads.com', 'slof')
+
+            // X / Twitter
+            .remove('twclid')
+            .removeByDomain('x.com', 's')
+            .removeByDomain('x.com', 't')
+            .removeByDomain('twitter.com', 's')
+            .removeByDomain('twitter.com', 't')
+
+            // Shopee 蝦皮購物
+            .removeByDomain('shopee.tw', 'af_channel')
+            .removeByDomain('shopee.tw', 'af_click_lookback')
+            .removeByDomain('shopee.tw', 'af_siteid')
+            .removeByDomain('shopee.tw', 'af_sub_siteid')
+            .removeByDomain('shopee.tw', 'af_viewthrough_lookback')
+            .removeByDomain('shopee.tw', 'c')
+            .removeByDomain('shopee.tw', 'is_from_login')
+            .removeByDomain('shopee.tw', 'pid')
+            .removeByDomain('shopee.tw', 'smtt')
+            .removeByDomain('shopee.tw', 'sp_atk')
+
+            // PChome 網路家庭
+            .removeByDomain('24h.pchome.com.tw', 'gad_source')
+            .removeByDomain('24h.pchome.com.tw', 'mod')
+            .removeByDomain('24h.pchome.com.tw', 'area')
+            .removeByDomain('shopping.pchome.com.tw', 'gad_source')
+            .removeByDomain('shopping.pchome.com.tw', 'mod')
+            .removeByDomain('shopping.pchome.com.tw', 'area')
+
+            // UDN 聯合新聞網
+            .removeByDomain('udn.com', 'from')
+            .removeByDomain('udn.com', 'ch')
+
+            // ETtoday 東森新聞雲
+            .removeByDomain('www.ettoday.net', 'from')
+            .removeByDomain('www.ettoday.net', 'eression_id')
+            .removeByDomain('www.ettoday.net', 'redirect')
+
+            // LTN 自由時報
+            .removeByDomain('news.ltn.com.tw', 'from')
+            .removeByDomain('www.ltn.com.tw', 'from')
+
+            // Dcard
+            .removeByDomain('www.dcard.tw', 'cid')
+
+            // AppsFlyer 行動歸因 (used by many Taiwan apps)
+            .remove('af_channel')
+            .remove('af_media_source')
+            .remove('af_ad')
+            .remove('af_adset')
+            .remove('af_c_id')
+            .remove('af_click_lookback')
+            .remove('af_siteid')
+            .remove('af_sub1')
+            .remove('af_sub2')
+            .remove('af_sub3')
+            .remove('af_sub4')
+            .remove('af_sub5')
+            .remove('c')
+            .remove('pid')
+
+            // momo購物網
+            .removeByDomain('www.momoshop.com.tw', 'osm')
+            .removeByDomain('www.momoshop.com.tw', 'gad_source')
+            .removeByDomain('www.momoshop.com.tw', 'gad_campaignid')
+            .removeByDomain('www.momoshop.com.tw', 'gbraid')
+
             // Amazon (all international domains)
             .removeByAmazon('tag')
             .removeByAmazon('linkCode')
